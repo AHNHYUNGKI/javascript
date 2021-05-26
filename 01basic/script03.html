@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var a = 10;
+        var b = 20;
+
+        a = 30;
+        var result = a + b;
+        console.log(result);
+
+        var x = "20";
+        var y = 20;
+
+        console.log(x + y); // 2020 문자
+        console.log(20 + y); // 40 숫자
+        console.log('10' + result); // 1050 문자
+
+        /* 데이터 타입 number, string, boolean, undefined, null */
+
+        var num1 = 3.14;
+        var num2 = 3;
+        console.log(typeof num1); // 데이터 타입 확인
+        console.log(typeof num2);
+
+        var str1 = "hong";
+        console.log(typeof str1);
+
+        var bool1 = true; // 0은 false, 0을 제외한 나머지 true
+        console.log(typeof bool1);
+
+        /* undefined는 변수선언을 했지만, 초기화 하지 않은 경우 */
+        var un;
+        console.log(typeof un);
+
+        /* null은 값은 저장했지만 존재하지 않을 때 */
+        var tag = document.getElementById("xxx");
+        console.log(tag);
+        console.log(typeof tag);
+
+    </script>
+
+</body>
+</html>

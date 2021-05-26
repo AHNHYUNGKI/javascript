@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        method1(); // 함수의 호이스팅 (선언부가 아래쪽에 있더라도 미리 호출이 가능)
+        method2(1, 2);
+        method2(1); // 함수의 매개변수의 개수가 다르더라도 호출이 가능
+        
+        var rs = method3(10, 20);
+        console.log(rs);
+
+        var c = method3;
+        var rs2 = c(100, 100);
+        console.log(rs2);
+
+        function method1() {
+            console.log(1);
+        }
+        // 매개변수
+        function method2(a, b) {
+            console.log('method2호출');
+            console.log(a + b);
+        }
+
+        // 리턴
+        function method3(a, b) {
+            console.log('method3호출');
+            var result = a + b;
+            return result;
+        }
+    </script>
+    
+</body>
+</html>
