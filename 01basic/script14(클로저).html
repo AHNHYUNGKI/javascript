@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // function func1() {
+        //     var a = 1;
+        // } // a의 범위는 함수안에서 끝
+        // console.log(a); // 에러...
+
+        function method() {
+            var a = "hello";
+            // var result = function() {
+            //     console.log(a);
+            // }
+            // result();
+
+            return function() { // js함수는 실행환경의 상태를 기억한다.
+                console.log(a);
+            }
+        }
+        // 클로저 - 내부익명함수가 외부함수 method()의 값을 바꿀 수 있는(접근가능) 키를 가지고 있음
+        // 외부함수 밖에서 내부함수가 호출되더라도 외부함수에 있는 지역변수 a에 접근이 가능 -> 이런 반환함수를 클로저
+        var b = method(); // method가 끝나는 시점에 a값은 제거
+        console.log(b);
+        b(); // b함수를 호출해서 a에 접근
+
+        // 클로저 함수를 이용해서 getter, setter메서드로 활용 가능
+
+        function test() {
+            var _name = "private변수"; // _는 private변수로 사용함을 의미합니다.
+            console.log(_name);
+
+            return function(name) {
+                _name = name;
+                return _name;
+            }
+        }
+
+        var setter = test();
+        console.log(setter("hong")); // 리턴의 결과 자체는 함수이고, 외부에서 값을 전달 (결과값이 변함)
+        
+
+    </script>
+    
+</body>
+</html>

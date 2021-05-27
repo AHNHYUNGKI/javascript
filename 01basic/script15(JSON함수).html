@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // 제이슨 파싱... 원격에 있는 어떤 데이터를 읽어올때 문자열로 날라옴,
+        // 그 값을 다시 사용하려면 object형태로 변경을 해야합니다.
+        var data = [
+            {id: 'kkk123', title: 'java'},
+            {id: 'aaa123', title: 'db'},
+            {id: 'sss123', title: 'js'}
+        ];
+
+        console.log(data);
+        
+        var result = JSON.stringify(data); // 제이슨을 문자열로 변경하는 방법
+        console.log(result);
+
+        var obj = JSON.parse(result); // 문자열을 제이슨으로 변경하는 방법
+        console.log(obj);
+
+        // 단, 문자열을 제이슨형식으로 변경할때는 엄격한 규칙을 가지는데, key, value을 ""처리해야합니다.
+        // JSON.parse("[key:'aaa123']"); // 에러
+
+        var result2 = JSON.parse('[{"키": "aaa123"}]');
+        console.log(result2);
+
+    </script>
+    
+</body>
+</html>

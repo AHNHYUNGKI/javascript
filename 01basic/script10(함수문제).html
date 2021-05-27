@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        /* 아래 함수를 익명함수로 변경 */
+        function check() {
+            alert("자바스크립트 익명함수");
+        }
+
+        // 익명함수
+        var check = function() {
+            alert("자바스크립트 익명함수");
+        }
+        
+        function method(a) {
+            if(a % 2 == 0) {
+                alert("짝수");
+            } else {
+                alert("홀수");
+            }
+        }
+
+        // 익명함수
+        var method = function(a) {
+            if(a % 2 == 0) {
+                alert("짝수");
+            } else {
+                alert("홀수");
+            }
+        }
+
+        // 이름, 국어, 수학, 영어를 받아서 "이름 님의 평균은: xx"
+        // 문자열을 반환하는 함수를 익명함수로 선언
+        var point = function(name, kor, math, eng) {
+            var avg = (kor + math + eng) / 3;
+            return name + "님의 평균: " + avg;
+        }
+        
+        check();
+        method();
+
+        var result = point('hong', 55, 60, 80);
+        document.write(result);
+        
+    </script>
+    
+</body>
+</html>

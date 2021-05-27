@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        var person = {name: 'hong', age: 20, arr: [1,2,3,4]};
+
+        console.log(person);
+        console.log(person.name);
+        console.log(person.age);
+        console.log(person.arr);
+        console.log(person.arr[1]);
+        
+        // js에 객체에 접근하는 방법2 ["key"]
+        console.log(person["name"]);
+        console.log(person["age"]);
+        console.log(person["arr"]);
+        console.log(person["arr"][1]);
+
+        console.log("--------------------");
+
+        var exam = {kor: 80, eng: 60, math: 90};
+
+        var hong = {name: "홍길동", exam: exam};
+        
+        // 1st
+        console.log(hong.name);
+        console.log(hong.exam);
+        console.log(hong.exam.kor);
+        console.log(hong.exam.math);
+
+        // 2nd
+        console.log(hong["name"]);
+        console.log(hong["exam"]);
+        console.log(hong["exam"]["kor"]);
+        console.log(hong["exam"]["math"]);
+
+        // 중첩포문으로 subject에 있는 값을 전부 출력하세요.
+        var list = [
+
+            {
+                name: '홍길동',
+                age: 20,
+                subject: ["java", "jsp", "js"],
+                birth: 20210522
+            },
+            {
+                name: '이순신',
+                age: 20,
+                subject: ["DB", "css"],
+                birth: 20210111
+            }
+
+        ];
+
+        for(var i = 0; i < list.length; i++) {
+            for(var j = 0; j < list[i].subject.length; j++) {
+                console.log(list[i].subject[j]);
+            }
+        }
+
+        // 함수를 가지고 있는 객체
+        var obj = {
+            age: 10,
+            func: function() {
+                console.log("func");
+            }
+        }
+        console.log(obj.age);
+        obj.func();
+
+    </script>
+
+</body>
+</html>
