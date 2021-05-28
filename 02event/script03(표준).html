@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button type="button" id="bt">표준이벤트버튼</button>
+
+    <script>
+        /* addEventListener의 매개변수("이벤트의종류", 실행시킬함수) */
+
+        var bt = document.getElementById("bt");
+
+        bt.addEventListener("click", test);
+
+        function test() {
+            console.log("표준이벤트실행...");
+        }
+
+        // 익명함수를 매개변수로 사용 가능
+        bt.addEventListener("click", function() {
+            console.log("표준이벤트실행...")
+        });
+        // 동일한 이벤트에 대해서 여러개 등록이 가능
+        bt.addEventListener("click", function() {
+            console.log("표준이벤트실행2...")
+        });
+
+    </script>
+    
+</body>
+</html>
