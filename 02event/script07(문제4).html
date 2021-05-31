@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>자바스크립트 카운트(인라인방식으로 하나의 함수로 처리)</h3>
+
+    <input type="number" value="0" id="result">
+
+    <button type="button" onclick="count(this);">+</button>
+    <button type="button" onclick="count(this);">-</button>
+
+    <script>
+
+        function count(a) {
+            var val = document.getElementById("result");
+            
+            if(a.innerHTML == "+") {
+                val.value ++;
+            } else if(a.innerHTML == "-") {
+               if(val.value <= 0) {
+                   alert("0보다 작을 수 없습니다.");
+                   return;
+               }
+               
+                val.value --;
+            }
+            
+        }
+
+      
+    </script>
+    
+</body>
+</html>
