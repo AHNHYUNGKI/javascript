@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul class="list">
+
+    </ul>
+    <button type="button" id="add">추가하기</button>
+    <button type="button" id="remove">삭제하기</button>
+
+    <script>
+        var list = document.querySelector(".list"); // 부모요소
+
+        // 추가하기 기능
+        var add = document.getElementById("add");
+        add.onclick = function() {
+
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href = "#";
+            a.innerHTML = "추가or삭제"
+
+            li.appendChild(a);
+            list.appendChild(li);
+
+        }
+
+        // 삭제하기 기능
+        var remove = document.getElementById("remove");
+        remove.onclick = function() {
+            
+            // console.log(list.childNodes); // 공백문자를 포함한 자식요소를 list형태로 얻음
+            // console.log(list.childNodes[0]); // 공백문자 text
+            // console.log(list.childNodes[1]); // 첫번째 추가한 li
+            // list.removeChild(list.childNodes[1]);
+
+            if(list.children.length == 0) return;
+
+            console.log(list.children); // 순수한 엘리먼트 요소만 list형태로 얻는다.
+            console.log(list.children[0]);
+            list.removeChild(list.children[0]);
+
+        }
+
+    </script>
+    
+</body>
+</html>
