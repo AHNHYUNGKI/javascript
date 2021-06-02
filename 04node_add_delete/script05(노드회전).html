@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {border-spacing: 0; border-collapse: collapse;}
+        th, td, tr {border: 1px solid #777;}
+    </style>
+
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>이동</th>
+                <th>번호</th>
+                <th>이름</th>
+                <th>내용</th>
+            </tr>
+        </thead>
+        <tbody class="tableList">
+            <tr>
+                <td>
+                    <button onclick="up(this)">↑</button>
+                    <button onclick="down(this)">↓</button>
+                </td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="up(this)">↑</button>
+                    <button onclick="down(this)">↓</button>
+                </td>
+                <td>2</td>
+                <td>이순신</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="up(this)">↑</button>
+                    <button onclick="down(this)">↓</button>
+                </td>
+                <td>3</td>
+                <td>신사임당</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="up(this)">↑</button>
+                    <button onclick="down(this)">↓</button>
+                </td>
+                <td>4</td>
+                <td>강감찬</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="up(this)">↑</button>
+                    <button onclick="down(this)">↓</button>
+                </td>
+                <td>5</td>
+                <td>김유신</td>
+                <td>안녕하세요</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+
+        function up(node) {
+
+            console.dir(node);
+
+            console.log(node.parentElement); // 순수한 Element요소만
+            console.log(node.parentNode); // text요소도 포함이 되어있다면 선택함
+            console.log(node.nextElementSibling); // 다음형제노드 (이전은 previous~)
+
+            console.log(node.firstElementChild); // 첫번째 자식요소
+            console.log(node.lastElementChild); // 마지막 자식요소
+
+            // 버튼을 클릭했을때 행노드를 선택
+            var tableList = document.querySelector(".tableList");
+            var current = node.parentElement.parentElement;
+            var previous = current.previousElementSibling;
+            console.log(current);
+            console.log(previous);
+
+            if(previous == null) {
+                alert("첫번째 행입니다.");
+                return;
+            }
+
+            // 부모요소.insertBefore(삽입할노드, 기준노드); // 기준노드앞에 삽입노드를 이동
+            tableList.insertBefore(current, previous);
+
+
+        }
+
+        function down(node) {
+
+            var current = node.parentElement.parentElement;
+            var next = current.nextElementSibling;
+
+            var tableList = document.querySelector(".tableList");
+
+            if(next == null) {
+                alert("마지막 행입니다.");
+                return;
+            }
+
+            tableList.insertBefore(next, current);
+
+        }
+
+    </script>
+    
+</body>
+</html>

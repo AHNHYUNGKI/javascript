@@ -64,16 +64,74 @@
             button.innerHTML = "X";
             button.addEventListener("click", deleteTodo);
 
+            var button2 = document.createElement("button");
+            button2.innerHTML = "↑";
+            button2.addEventListener("click", up);
+
+            var button3 = document.createElement("button");
+            button3.innerHTML = "↓";
+            button3.addEventListener("click", down);
+
             li.appendChild(button);
+            li.appendChild(button2);
+            li.appendChild(button3);
+            
             todoList.appendChild(li);
 
         }
         // 할일삭제함수
         function deleteTodo() {
-
-            todoList.removeChild(todoList.children[0]);
+            // 삭제버튼 클릭시 해당버튼 요소를 판별할 수 없음
+            // 삭제버튼 클릭시 부모요소인 li를 삭제 해야함
+            var current = event.target.parentElement;
+            console.log(current);
+            current.remove();
 
         };
+        
+        function up() {
+
+            // console.log(event.target); 이벤트 발생 요소 확인
+            var current = event.target.parentElement;
+            console.log(current);
+            var previous = current.previousElementSibling;
+            console.log(previous);
+
+            if(previous == null) {
+                alert("첫번째 행입니다.");
+                return;
+            }
+
+            if(confirm("이동하시겠습니까?")) {
+                todoList.insertBefore(current, previous);
+            } else {
+                return;
+            }
+          
+
+        }
+
+        function down() {
+
+            var current = event.target.parentElement;
+            console.log(current);
+            var next = current.nextElementSibling;
+            console.log(next);
+
+            if(next == null) {
+                alert("마지막 행입니다.");
+                return;
+            }
+
+            if(confirm("이동하시겠습니까?")) {
+                todoList.insertBefore(next, current);
+            } else {
+                return;
+            }
+
+
+        }
+        
 
     </script>
 

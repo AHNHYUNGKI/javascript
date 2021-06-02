@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 이 버튼은 클래스이름 btn을 지니고 있습니다. -->
+    <button type="button" class="btn" id="btn">버튼</button>
+    
+    <script>
+
+        var btn = document.getElementById("btn");
+
+        console.log(btn.type);
+        console.log(btn.id);
+        console.log(btn.class); // - undefined : 클래스는 예약어이기 때문에 선택하는 방법이 따로 존재함
+
+        console.log(btn.className); // 클래스 이름을 얻음
+        console.log(btn.classList); // 클래스 이름을 리스트로 얻는다
+
+        // proto - 눈에 보이지 않는 원본객체에 정의되어 있는 기능(함수)
+
+        btn.classList.add("newBtn"); // 사용자 클래스 추가
+        console.log(btn.classList);
+
+        btn.classList.remove("newBtn"); // 사용자 클래스 삭제
+        console.log(btn.classList);
+
+        console.log(btn.classList.contains("newBtn"));
+
+    </script>
+
+</body>
+</html>
