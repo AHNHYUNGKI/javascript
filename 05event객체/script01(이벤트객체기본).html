@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>값을 변경해서 집어넣은 형태가 아니고, 동일한 태그에 대해서 그 즉시 반영하는 이벤트를 주려면??...</h3>
+
+    <ul class="list">
+        <li>1. hong</li>
+        <li>2. lee</li>
+        <li>3. kim</li>
+        <li>4. ahn</li>
+        <li>5. park</li>
+
+    </ul>
+
+    <p class="result"></p>
+
+    <script>
+        /* 
+        이벤트가 발생했을 때 실행되는 함수의 arguments객체에 event객체를 자동으로 넣어줍니다.
+        event객체에는 이벤트 관련된 많은 기능들이 들어있는데,
+        그 중 이벤트가 발생한 곳을 확인하는 기능이 target 입니다.
+        */
+        var list = document.querySelectorAll(".list > li");
+        var result = document.querySelector(".result");
+        for(var i = 0; i < list.length; i++) {
+
+            list[i].onclick = function(event) {
+                console.log(event);
+                console.log(event.target);
+                console.log(event.target.innerHTML);
+
+                result.innerHTML = event.target.innerHTML;
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>

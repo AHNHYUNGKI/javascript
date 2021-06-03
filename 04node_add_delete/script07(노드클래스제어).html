@@ -34,5 +34,55 @@
 
     </script>
 
+    <hr/>
+
+    <style>
+        .toggle {
+            background-color: burlywood;
+        }
+        .change {
+            background-color: skyblue;
+        }
+    </style>
+
+    <h3>클래스를 이용해서 하나의 버튼을 두개의 기능으로 사용하는 토글버튼</h3>
+    <button type="button" class="toggle" id="toggle">토글버튼</button>
+
+    <script>
+
+        var toggle = document.getElementById("toggle");
+        toggle.onclick = function() {
+            // console.log(toggle.className);
+            if(toggle.className == "toggle") {
+                toggle.className = "change";
+                toggle.innerHTML = "체인지";
+            } else {
+                toggle.className = "toggle";
+                toggle.innerHTML = "토글버튼";
+            }
+        }
+    </script>
+
+    <hr/>
+
+    <h3>aa클래스를 추가하고 지우는 형태의 토글버튼</h3>
+    <button type="button" class="toggle" id="toggle2">토글버튼2</button>
+
+    <script>
+        var toggle2 = document.getElementById("toggle2");
+        toggle2.onclick = function() {
+
+            toggle2.classList.toggle("aa");
+
+            // if(toggle2.classList.contains("aa")) {
+            //     toggle2.classList.remove("aa");
+            // } else {
+            //     toggle2.classList.add("aa");
+            // }
+
+        }
+    </script>
+
+
 </body>
 </html>

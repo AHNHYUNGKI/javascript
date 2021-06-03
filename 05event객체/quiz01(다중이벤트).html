@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {list-style: none;}
+        li {display: inline-block;}
+    </style>
+
+</head>
+<body>
+
+    <h3>다중이벤트 처리</h3>
+
+    <div class="imgList">
+        <ul>
+            <li><img src="img/1.jpg" alt="spring" width="100"></li>
+            <li><img src="img/2.jpg" alt="summer" width="100"></li>
+            <li><img src="img/3.jpg" alt="fall" width="100"></li>
+            <li><img src="img/4.jpg" alt="winter" width="100"></li>
+        </ul>
+    </div>
+    결과:
+    <div class="result">
+        <img src="img/1.jpg" alt="대상이미지" width="300">
+    </div>
+
+    <script>
+        var list = document.querySelectorAll(".imgList ul li");
+        var result = document.querySelector(".result img");
+
+        for(var i = 0; i < list.length; i++) {
+           
+            list[i].addEventListener("click", handleImg);
+
+        }
+
+        function handleImg(event) {
+            console.log(event.target);
+            result.src = event.target.src;
+        }
+
+    </script>
+    
+</body>
+</html>
