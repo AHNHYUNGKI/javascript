@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // 날짜 생성방법 new Date();
+        var date = new Date();
+        var date2 = new Date("2021-06-04");
+        var date3 = new Date("2021-06-04 16:20:15");
+        var date4 = new Date(1622791352275); // 밀리초기준시
+
+        console.log(date);
+        console.log(date2);
+        console.log(date3);
+        console.log(date4);
+
+        // 날짜 기준 - 년, 월, 일, 시 분 초를 숫자형태로 얻는 방법
+        console.log(date.getFullYear());
+        console.log(date.getMonth() + 1);
+        console.log(date.getDate());
+        console.log(date.getHours());
+        console.log(date.getMinutes());
+        console.log(date.getSeconds());
+        console.log(date.getTime());
+
+        // ex) 1시전 이전작성은 방금전, 하루 이전작성은 xx시간전, 하루가 넘어간 경우는 날짜표기
+
+        // 1622791352275 시간과의 갭차이
+        var now = new Date();
+        var NowMillis = now.getTime();
+
+        var gap = NowMillis - 1622791352275;
+        console.log("시간갭: ", gap);
+
+        var time;
+        if(gap < 24 * 60 * 60 * 1000) { // 1일 이하인 경우
+            if(gap < 60 * 60 * 1000) { // 1시간 이전
+                time = "방금 전";
+            } else {
+                time = parseInt(gap / 60 * 60 * 1000) + "시간 전";
+            }
+        } else { // 1일 이상인 경우
+            var today = new Date(millis);
+            var year = today.getFullYear();
+            var month = today.getMonth() + 1;
+            var day = today.getDate();
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+
+            time = year + "년" 
+                + (month < 10 ? "0" + month : month) + "월" 
+                + (day < 10 ? "0" + day : day) + "일" 
+                + (hour < 10 ? "0" + hour : hour) + "시" 
+                + (minute < 10 ? "0" + minute : minute) + "분" 
+                + (second < 10 ? "0" + second : second) + "초";
+        }
+    
+        console.log(time);
+        
+    </script>
+    
+</body>
+</html>

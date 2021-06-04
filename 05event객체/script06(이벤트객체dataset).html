@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul class="nameList">
+        <li><a href="#" data-info='{"id": "hhh", "age": "20"}'>hong</a></li>
+        <li><a href="#" data-info='{"id": "kkk", "age": "25"}'>kim</a></li>
+        <li><a href="#" data-info='{"id": "eee", "age": "30"}'>lee</a></li>
+        <li><a href="#" data-info='{"id": "ppp", "age": "33"}'>park</a></li>
+    </ul>
+
+    <script>
+        var nameList = document.querySelector(".nameList");
+        nameList.onclick = function() {
+            event.preventDefault();
+            if(event.target.tagName != "A") return;
+
+            // console.log(event.target.href);
+            // console.log(event.target.data-info); // 에러
+
+            // data-xx로 저장한 속성은 dataset의 xx값으로 저장됩니다.
+            console.log(event.target.dataset.info);
+
+            var data = JSON.parse(event.target.dataset.info);
+
+        }
+    </script>
+    
+</body>
+</html>
