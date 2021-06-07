@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .main-banner {
+            background: linear-gradient(90deg,#0c151c 1.3125rem,transparent 1%) 50%,linear-gradient(#0c151c 1.3125rem,transparent 1%) 50%,#263747;
+            background-size: 1.5rem 1.5rem;
+            padding: 6rem 0;
+            color: #fff;
+            text-align: center;
+        }
+        .main-banner img {
+            display: none;
+            animation: topIn 0.5s linear;
+        }
+
+        @keyframes topIn {
+            from {
+                opacity: 0;
+                transform: translateY(-100%); /* 위에서 아래로 떨어지는 애니메이션 효과 */
+            } to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="main-banner">
+        <img src="img/1.jpg" width="300">
+        <img src="img/2.jpg" width="300">
+        <img src="img/3.jpg" width="300">
+        <img src="img/4.jpg" width="300">
+    </div>
+
+    <script>
+        var stop;
+        var index = 0;
+        var list = document.querySelector(".main-banner");
+        function changeImg() {
+            // console.log(list.children);
+            // console.log(list.children[index]);
+            list.children[index].style.display = "inline";
+            index++;
+
+            if(index == list.children.length) clearInterval(stop);
+        }
+
+        // 1
+        (function() {
+            stop = setInterval(changeImg, 500);
+        })();
+    </script>
+    
+</body>
+</html>

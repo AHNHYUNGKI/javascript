@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {margin: 0; padding: 0;}
+        .bgImg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            animation: fadeIn 0.5s linear;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }
+        }
+
+        .time h2 {color: #fff;}
+    </style>
+
+</head>
+<body data-img='{"1": "img/1.jpg", "2": "img/2.jpg", "3": "img/3.jpg", "4": "img/4.jpg"}'>
+
+    <!-- 배경을 넣을 이미지 형태 -->
+    <!-- <img src="img/1.jpg" class="bgImg"> -->
+   
+    <div class="time">
+        <h3>타이머</h3>
+        <h2>00:00:00</h2>
+    </div>
+
+    <!-- 
+        1. body아래에 있는 데이터셋을 이용해서 10초마다 배경을 바꾸는 작업
+        2. 타이머 아래에 1초마다 현재시간을 바꾸는 작업
+
+        데이터셋의 길이를 확인하는 문법 필요(검색)...
+     -->
+
+     <script>
+        
+        /* 시간처리함수 */
+        var time = document.querySelector(".time > h2");
+        function now() {
+            
+            var date = new Date();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            
+            // console.log(time.innerHTML);
+            time.innerHTML = (hour < 10 ? "0" + hour : hour) + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second);    
+            
+        }
+        // // 데이터셋 사용하지 않음...
+        // function backImg() {
+        //     bgImg.src = "img/" + num + ".jpg";
+        //     num++;
+        //     if(num == 5) num = 1;
+        // }
+
+        /* 이미지처리함수 */
+        var count = 0;
+        var dataImg = JSON.parse(document.body.dataset.img);
+        function createImg() {
+            console.log(dataImg);
+
+            var img = document.createElement("img");
+            count++;
+            img.src = dataImg[count];
+            console.log(dataImg[count]);
+
+            img.classList.add("bgImg");
+
+            document.body.appendChild(img);
+
+            console.dir(Object.keys(dataImg)); // 객체의 키를 뽑아서 배열로 반환
+            if(count == Object.keys(dataImg).length) count = 0;
+        }
+        
+
+        (function() {
+            now();
+            setInterval(now, 1000);
+            createImg();
+            setInterval(createImg, 5000);
+        })();
+
+     </script>
+    
+</body>
+</html>
