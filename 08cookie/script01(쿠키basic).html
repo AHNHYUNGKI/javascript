@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        쿠키이름: <input type="text" id="cookieName"><br/>
+        쿠키값: <input type="text" id="cookieValue"><br/>
+        <button type="button" id="cookieMake">쿠키생성</button>
+    </div>
+
+    <div>
+        찾을쿠키이름:<input type="text" id="cookieFind">
+        <button type="button" id="cookieGet">쿠키확인</button>
+    </div>
+
+    <script>
+        // 쿠키생성
+        var cookieMake = document.getElementById("cookieMake");
+        cookieMake.addEventListener("click", createCookie);
+
+        function createCookie() {
+            
+            // 쿠키의 키=값
+            var name = document.getElementById("cookieName").value;
+            var value = document.getElementById("cookieValue").value;
+
+            // 쿠키 시간
+            var date = new Date();
+            date.setDate(date.getDate() + 1); // today + 1
+            console.log(date);
+
+            // 쿠키는 문자열의 형태로 만들어집니다. (형식을 반드시 지켜야합니다.)
+            var cookie = "";
+            cookie += name + "=" + value + ";" // 키=값;
+            cookie += "expires=" + date;
+
+            console.log(cookie);
+
+            // 쿠키는 document.cookie에 저장
+            document.cookie = cookie;
+
+        }
+
+        // 쿠키 찾기
+        var cookieGet = document.getElementById("cookieGet");
+        cookieGet.addEventListener("click", getCookie);
+        
+        function getCookie() {
+            var find = document.getElementById("cookieFind").value; // 찾을 쿠키 이름
+
+            var cookies = document.cookie.split(";"); // 실제 쿠키 값
+
+            // console.log(find, cookies);
+
+            // 쿠키 분해 / 확인
+            for(var i in cookies) {
+                // console.log(i); // 인덱스
+                // console.log(cookies[i]); // 값
+
+                if(cookies[i].indexOf(find) != -1) { // 키값이 존재함
+                    console.log(cookies[i].replace(" ", "").replace(find+"=", "")); // 찾을 value값
+                    return; // 값을 찾음. 함수종료
+                }
+            }
+
+        }
+    </script>
+    
+</body>
+</html>

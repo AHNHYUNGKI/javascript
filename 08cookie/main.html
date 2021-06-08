@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 쿠키 js -->
+    <script src="popup.js"></script>
+
+</head>
+<body>
+
+    <h2>메인페이지</h2>
+
+    <!-- 
+        1. 페이지가 로드된 이후에 팝업창을 띄워줍니다.
+        (쿠키가 존재하면 팝업을 띄우지 않도록 처리함)
+        2. 체크박스 클릭시 1일 유지되는 쿠키를 생성
+     -->
+
+     <script>
+         window.onload = function() {
+
+            // 팝업창
+            console.log(getCookie("popup"));
+
+            if(!getCookie("popup")) {
+                window.open("popup.html", "메인팝업창", "width = 500, height = 300 top=50, left=50");
+            }
+
+         }
+
+     </script>
+
+    
+</body>
+</html>
