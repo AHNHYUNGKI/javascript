@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>서울시 공공와이파이 위치정보 xml로 얻어오기</h2>
+
+    <script>
+
+        function getFetch() {
+
+            fetch("http://openapi.seoul.go.kr:8088/51534c565573616f3531687445646a/xml/TbPublicWifiInfo/1/5/")
+            .then(function(response) {
+                // console.log(response);
+                return response.text();
+            })
+            .then(function(text) {
+                // console.log(text);
+                // text문서 -> xml문서로 변경
+                // Domparser() 객체를 이용합니다.
+
+                // var dom = new DOMParser();
+                // var result = dom.parseFromString(text, "text/xml"); // 파싱할 문자열, 파싱할 형태
+                // console.log(result);
+
+                return new DOMParser().parseFromString(text, "text/xml");
+
+            })
+            .then(function(data) {
+                // console.log(data);
+                var list = data.querySelectorAll("row");
+                console.log(list);
+
+                for(var i = 0; i < list.length; i++) {
+                    console.log(list[i].querySelector("X_SWIFI_ADRES1").innerHTML);
+                    console.log(list[i].querySelector("X_SWIFI_ADRES2").innerHTML);
+                    console.log(list[i].querySelector("LAT").innerHTML);
+                    console.log(list[i].querySelector("LNT").innerHTML);
+                }
+            })
+        }
+
+        (function() {
+            getFetch();
+        })();
+
+    </script>
+    
+</body>
+</html>

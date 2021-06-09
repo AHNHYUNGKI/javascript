@@ -52,11 +52,20 @@
             // });
 
             // 4. 비동기 함수는 순서대로 실행되지 않습니다.
-            fetch("hello.txt").then(func1);
-            function func1(response) {
-                console.log(1);
-            }
-            console.log(2);
+            // fetch("hello.txt").then(func1);
+            // function func1(response) {
+            //     console.log(1);
+            // }
+            // console.log(2);
+
+
+            var p = fetch("hello.txt");
+            p.then(function(response) {
+                console.log(response);
+            })
+
+
+
         }
     </script>
     

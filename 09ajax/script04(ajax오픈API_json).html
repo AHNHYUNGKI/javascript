@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    51534c565573616f3531687445646a
+
+    <h2>서울시 공공와이파이 위치정보</h2>
+
+    <script>
+        /* 좌표값, 실제주소 확인 */
+        function open() {
+            
+            fetch("http://openapi.seoul.go.kr:8088/51534c565573616f3531687445646a/json/TbPublicWifiInfo/1/5/")
+            .then(function(response) {
+                // console.log(response);
+
+                if(response.status != 200) {
+                    alert("네트워크 오류 발생. 다시 시도하세요.");
+                    return;
+                } else {
+                    return response.json();
+                }
+
+            })
+            .then(function(text) {
+                // console.log(text);
+                
+                var list = text.TbPublicWifiInfo.row;
+                // console.log(list);
+
+                for(var i = 0; i < list.length; i++) {
+                    console.log(list[i].X_SWIFI_ADRES1);
+                    console.log(list[i].X_SWIFI_ADRES2);
+                    console.log(list[i].LAT);
+                    console.log(list[i].LNT);
+                }
+
+
+            })
+
+        }
+
+        (function() {
+            open();
+        })();
+    </script>
+    
+</body>
+</html>
