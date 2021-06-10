@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>카카오맵에 서울시 공공자전거 실시간 대여정보 마커 표시하기</h2>
+
+    <div id="map" style="width:700px;height:500px;"></div>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9995b965d438533e1e7655fd798f3840&libraries=services,clusterer,drawing"></script>
+    <!-- 카카오 지도 생성 -->
+    <!-- <script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+	</script> -->
+
+    <!-- 지도 위에 마커 찍기 -->
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        // 마커가 표시될 위치입니다 
+        // var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+        
+        function open() {
+            fetch("http://openapi.seoul.go.kr:8088/5178676c7073616f37326150706c7a/json/bikeList/1/100")
+            .then(function(response) {
+                // console.log(response);
+
+                if(response.status != 200) {
+                    alert("네트워크 오류 발생. 다시 시도하세요.");
+                    return;
+                } else {
+                    return response.json();
+                }
+
+            })
+            .then(function(text) {
+                console.log(text);
+
+                var list = text.rentBikeStatus.row;
+                console.log(list);
+                // stationLatitude
+                // stationLongitude
+                
+                for(var i = 0; i < list.length; i++) {
+
+                    var markerPosition = new kakao.maps.LatLng(list[i].stationLatitude, list[i].stationLongitude);
+
+                    var marker = new kakao.maps.Marker({
+                    position: markerPosition
+                    });
+                    marker.setMap(map);
+
+                }
+
+
+            })
+        }
+
+        /* // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map); */
+
+        (function() {
+            open();
+        })();
+    </script>
+
+
+    <!-- 마커 찍을 데이터 -->
+    <!-- <script>
+
+        function open() {
+            fetch("http://openapi.seoul.go.kr:8088/5178676c7073616f37326150706c7a/json/bikeList/1/100")
+            .then(function(response) {
+                // console.log(response);
+
+                if(response.status != 200) {
+                    alert("네트워크 오류 발생. 다시 시도하세요.");
+                    return;
+                } else {
+                    return response.json();
+                }
+
+            })
+            .then(function(text) {
+                console.log(text);
+
+                var list = text.rentBikeStatus.row;
+                console.log(list);
+                // stationLatitude
+                // stationLongitude
+
+            })
+        }
+
+        (function() {
+            open();
+        })();
+
+    </script> -->
+
+
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    5178676c7073616f37326150706c7a
+    <h2>서울시 공중화장실 위치정보</h2>
+
+    <script>
+
+        function open() {
+            fetch("http://openAPI.seoul.go.kr:8088/5178676c7073616f37326150706c7a/json/GeoInfoPublicToilet/1/1000")
+            .then(function(response) {
+                // console.log(response);
+
+                if(response.status != 200) {
+                    alert("네트워크 오류 발생. 다시 시도하세요.");
+                    return;
+                } else {
+                    return response.json();
+                }
+
+            })
+            .then(function(text) {
+                // console.log(text);
+
+                var list = text.GeoInfoPublicToilet.row;
+                // console.log(list);
+
+                for(var i = 0; i < list.length; i++) {
+                    console.log(list[i].X); // x좌표
+                    console.log(list[i].Y); // y좌표
+                    // 경위도가 아님...
+                }
+
+            })
+        }
+
+        (function() {
+            open();
+        })();
+
+    </script>
+    
+</body>
+</html>
